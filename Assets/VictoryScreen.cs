@@ -2,19 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 
-public class GameOverScreen : MonoBehaviour
+public class VictoryScreen : MonoBehaviour
 {
     // Start is called before the first frame update
-    public void Start()
+    void Start()
     {
-        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
-    public void Restart()
+    public void MainMenu()
     {
-        SceneManager.LoadScene("Game1");
+        SceneManager.LoadScene("MainMenu");
     }
 
     // Update is called once per frame

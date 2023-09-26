@@ -9,6 +9,10 @@ public class CoinCollect : MonoBehaviour
     public static int coin = 0;
     public TextMeshProUGUI coinText;
 
+    public void Start()
+    {
+        coin = 0;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Coin"))
@@ -18,13 +22,16 @@ public class CoinCollect : MonoBehaviour
             Debug.Log(coin);
             Destroy(other.gameObject);
         }
+        if (coin == 25) 
+        {
+            SceneManager.LoadScene("Victory"); 
+        }
     }
 
     private void Update()
     {
         if (coin >= 1)
         {
-            // Sla de score op in PlayerPrefs wanneer de timer stopt
             PlayerPrefs.SetInt("FinalScore", coin);
         }
     }
