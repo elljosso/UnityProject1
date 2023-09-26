@@ -12,6 +12,7 @@ public class CoinCollect : MonoBehaviour
     public void Start()
     {
         coin = 0;
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -22,8 +23,14 @@ public class CoinCollect : MonoBehaviour
             Debug.Log(coin);
             Destroy(other.gameObject);
         }
-        if (coin == 25) 
+        if (coin >= 24) 
         {
+            int currentHighScore = PlayerPrefs.GetInt("HighScore", 0); 
+            if (coin > currentHighScore) 
+            {
+                PlayerPrefs.SetInt("HighScore", coin); 
+            }
+            PlayerPrefs.SetInt("FinalScore", coin);
             SceneManager.LoadScene("Victory"); 
         }
     }

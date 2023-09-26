@@ -20,6 +20,7 @@ public class GameOverScreen : MonoBehaviour
     // Update is called once per frame
     public void Quit()
     {
+        PlayerPrefs.DeleteKey("HighScore");
         Application.Quit();
         Debug.Log("The player has quit");
     }

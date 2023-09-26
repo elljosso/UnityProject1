@@ -7,7 +7,16 @@ public class GameOver : MonoBehaviour
 
     private void Start()
     {
-        int finalScore = PlayerPrefs.GetInt("FinalScore", 0); // Haal de score op uit PlayerPrefs met de juiste sleutel
-        scoreText.text = "High Score: " + finalScore.ToString();
+        int finalScore = PlayerPrefs.GetInt("FinalScore", 0); // Haal de huidige score op uit PlayerPrefs
+        int highScore = PlayerPrefs.GetInt("HighScore", 0); // Haal de highscore op uit PlayerPrefs
+
+        // Als de huidige score groter is dan de highscore, stel de huidige score in als de nieuwe highscore
+        if (finalScore > highScore)
+        {
+            highScore = finalScore;
+            PlayerPrefs.SetInt("HighScore", highScore);
+        }
+
+        scoreText.text = "High Score: " + highScore.ToString();
     }
 }
