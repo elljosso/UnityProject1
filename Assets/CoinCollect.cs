@@ -18,6 +18,7 @@ public class CoinCollect : MonoBehaviour
     {
         if (other.transform.CompareTag("Coin"))
         {
+            SoundManager.instance.coinssource.PlayOneShot(SoundManager.instance.coinSound);
             coin++;
             coinText.text = "Score: " + coin.ToString();
             Debug.Log(coin);
